@@ -8,5 +8,5 @@ import com.rolon.spring.rest.SpringRest.model.UserModel;
 
 @Repository
 public interface UserRepository extends CrudRepository<UserModel, Integer>{
-
+	public abstract UserModel findByEmail(String email);
 }

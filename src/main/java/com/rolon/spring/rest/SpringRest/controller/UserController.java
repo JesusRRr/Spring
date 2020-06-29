@@ -13,7 +13,7 @@ import com.rolon.spring.rest.SpringRest.model.UserModel;
 import com.rolon.spring.rest.SpringRest.service.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 	@Autowired
 	UserService userService;

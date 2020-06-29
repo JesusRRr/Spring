@@ -27,8 +27,13 @@ public class UserController {
 	}
 	
 	@PostMapping()
-	public UserModel saveUser(@RequestBody UserModel user){
-		return userService.saveUser(user);
+	public UserModel saveUser(@RequestBody UserModel user) throws Exception{
+		try {
+			return userService.saveUser(user);
+		}catch(Exception e) {
+			return user;
+		}
+		
 	}
 	
 	@GetMapping(path="/{email}")

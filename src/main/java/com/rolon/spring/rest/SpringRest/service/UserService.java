@@ -17,8 +17,13 @@ public class UserService{
 		return (List<UserModel>) userRepository.findAll();
 	}
 	
-	public UserModel saveUser(UserModel user) {
-		return userRepository.save(user);
+	public UserModel saveUser(UserModel user) throws Exception {
+		
+		if(findByEmail(user.getEmail())==null) {
+			return userRepository.save(user);
+		}else {
+			throw new Exception("User already exist");
+		}
 	}
 	
 	public UserModel findByEmail(String email) {

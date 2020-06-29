@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rolon.spring.rest.SpringRest.model.UserModel;
@@ -33,16 +34,15 @@ public class UserController {
 		}catch(Exception e) {
 			return user;
 		}
-		
 	}
-	@GetMapping(path="/{email}")
-	public Optional<UserModel> findByEmail(@PathVariable("email") String email){
+	@GetMapping(path="/query")
+	public Optional<UserModel> findByEmail(@RequestParam("email") String email){
 		return Optional.of(userService.findByEmail(email));
 	}
 	
 	@GetMapping(path="/{id}")
-	public Optional<UserModel> findById(@PathVariable("id") String email){
-		return Optional.of(userService.findByEmail(email));
+	public Optional<UserModel> findById(@PathVariable("id") int id){
+		return userService.findById(id);
 	}
 	
 	@DeleteMapping(path="/{id}")
@@ -55,7 +55,7 @@ public class UserController {
 		}else {
 			return new StringBuilder("User with id: ")
 					.append(id)
-					.append(" wasn't deleted")
+					.append(" wasn't delete")
 					.toString();
 		}
 		

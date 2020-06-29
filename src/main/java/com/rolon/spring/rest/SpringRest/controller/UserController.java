@@ -1,9 +1,11 @@
 package com.rolon.spring.rest.SpringRest.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +31,9 @@ public class UserController {
 		return userService.saveUser(user);
 	}
 	
-	@GetMapping()
-	public UserModel findByEmail(@RequestParam String email){
-		return userService.findByEmail(email);
+	@GetMapping(path="/{email}")
+	public Optional<UserModel> findByEmail(@PathVariable("email") String email){
+		return Optional.of(userService.findByEmail(email));
 	}
 	
 }

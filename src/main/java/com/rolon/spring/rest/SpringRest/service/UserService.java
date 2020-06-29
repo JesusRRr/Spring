@@ -35,4 +35,13 @@ public class UserService{
 		return userRepository.findById(id);
 	}
 	
+	public boolean deleteUser(int id) {
+		try {
+			userRepository.deleteById(id);
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+	}
+	
 }

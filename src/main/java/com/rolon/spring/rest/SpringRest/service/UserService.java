@@ -12,7 +12,10 @@ import com.rolon.spring.rest.SpringRest.repository.UserRepository;
 public class UserService{
 	@Autowired
 	UserRepository userRepository;
-
+	
+	public List<UserModel> getUsers(){
+		return (List<UserModel>) userRepository.findAll();
+	}
 	
 	
 }
